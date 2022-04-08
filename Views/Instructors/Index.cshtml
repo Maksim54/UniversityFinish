@@ -1,0 +1,62 @@
+﻿@model University.ViewModels.InstructorIndexData
+
+@{
+    ViewBag.Title = "Instructors";
+}
+
+<h2>Juhendajad</h2>
+
+<p>
+    @Html.ActionLink("Loo uus", "Create")
+</p>
+<table class="table">
+	<tr>
+        <th>Perekonnanimi</th>
+        <th>Eesnimi</th>
+        <th>Laenutamise kuupäev </th>
+        <th>Kontor</th>
+        <th>Kursused</th>
+		<th></th>
+	</tr>
+
+    @foreach (var item in Model.Instructors)
+    {
+        string selectedRow = "";
+        if (item.ID == ViewBag.InstructorID)
+        {
+            selectedRow = "success";
+        }
+<tr class="@selectedRow">
+	<td>
+		@Html.DisplayFor(modelItem => item.LastName)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.FirstMidName)
+	</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.HireDate)
+	</td>
+	<td>
+		@if (item.OfficeAssignment != null)
+		{
+			@item.OfficeAssignment.Location
+		}
+	</td>
+	<td>
+		@{
+			foreach (var course in item.Courses)
+			{
+				@course.CourseID @:  @course.Title <br />
+			}
+		}
+	</td>
+	<td>
+		@Html.ActionLink("Valige", "Index", new { id = item.ID }) |
+		@Html.ActionLink("Muuda", "Edit", new { id = item.ID }) |
+		@Html.ActionLink("Üksikasjad", "Details", new { id = item.ID }) |
+		@Html.ActionLink("Kustuta", "Delete", new { id = item.ID })
+	</td>
+</tr>
+    }
+
+</table>

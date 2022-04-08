@@ -1,0 +1,51 @@
+﻿@model IEnumerable<University.Models.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>Kursused</h2>
+
+<p>
+    @Html.ActionLink("Loo uus", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Credits)
+        </th>
+        <th>
+            Osakond
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Credits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Muuda", "Edit", new { id=item.CourseID }) |
+            @Html.ActionLink("Üksikasjad", "Details", new { id=item.CourseID }) |
+            @Html.ActionLink("Kustuta", "Delete", new { id=item.CourseID })
+        </td>
+    </tr>
+}
+
+</table>

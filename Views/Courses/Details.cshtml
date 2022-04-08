@@ -1,0 +1,50 @@
+﻿@model University.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Üksikasjad</h2>
+
+<div>
+    <h4>Kursus</h4>
+    <hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Title)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Title)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Credits)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Credits)
+		</dd>
+		<dt>
+			Department
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Department.Name)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.CourseID)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.CourseID)
+		</dd>
+
+	</dl>
+</div>
+<p>
+    @Html.ActionLink("Muuda", "Edit", new { id = Model.CourseID }) |
+    @Html.ActionLink("Tagasi nimekirja", "Index")
+</p>

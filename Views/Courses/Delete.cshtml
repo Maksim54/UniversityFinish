@@ -1,0 +1,57 @@
+﻿@model University.Models.Course
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kustuta</h2>
+
+<h3>Kas olete kindel, et soovite selle kustutada?</h3>
+<div>
+    <h4>Kursus</h4>
+    <hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Title)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Title)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Credits)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Credits)
+		</dd>
+		<dt>
+			Department
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Department.Name)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.CourseID)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.CourseID)
+		</dd>
+
+
+	</dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Kustuta" class="btn btn-default" /> |
+            @Html.ActionLink("Tagasi nimekirja", "Index")
+        </div>
+    }
+</div>

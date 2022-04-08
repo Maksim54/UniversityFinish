@@ -1,0 +1,60 @@
+﻿@model PagedList.IPagedList<University.Models.Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+	ViewBag.Title = "Students";
+}
+
+<h2>Õpilased</h2>
+
+<p>
+	@Html.ActionLink("Loo uus", "Create")
+</p>
+@using (Html.BeginForm("Index", "Students", FormMethod.Get))
+{
+<p>
+     Otsi nime järgi: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+     <input type="submit" value="Otsi" />
+</p>
+}
+<table class="table">
+	<tr>
+		<th>
+			@Html.ActionLink("Perekonnanimi", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+		</th>
+        <th>
+            Eesnimi
+        </th>
+		<th>
+			@Html.ActionLink("Registreerimise kuupäev", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.LastName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.FirstMidName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.EnrollmentDate)
+			</td>
+			<td>
+				@Html.ActionLink("Muuda", "Edit", new { id = item.ID }) |
+				@Html.ActionLink("Üksikasjad", "Details", new { id = item.ID }) |
+				@Html.ActionLink("Kustuta", "Delete", new { id = item.ID })
+			</td>
+		</tr>
+	}
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+	new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

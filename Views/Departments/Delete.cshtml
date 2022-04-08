@@ -1,0 +1,65 @@
+﻿@model University.Models.Department
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kustuta</h2>
+<p class="error">@ViewBag.ConcurrencyErrorMessage</p>
+
+<h3>Kas olete kindel, et soovite selle kustutada?</h3>
+<div>
+    <h4>Osakond</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dd>
+			@Html.DisplayFor(model => model.Administrator.FullName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Administrator.LastName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Administrator.LastName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Budget)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Budget)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.StartDate)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.StartDate)
+		</dd>
+
+	</dl>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+		@Html.HiddenFor(model => model.DepartmentID)
+		@Html.HiddenFor(model => model.RowVersion)
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Kustuta" class="btn btn-default" /> |
+			@Html.ActionLink("Tagasi nimekirja", "Index")
+
+		</div>
+	}
+</div>

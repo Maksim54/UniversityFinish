@@ -1,17 +1,19 @@
-﻿body {
+body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: Trebuchet MS;
+    font-family: 'Gwendolyn', cursive;
     background-image: url("../Images/outside.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100%;
+    color: orange;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    color: orange;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -27,6 +29,7 @@ input,
 select,
 textarea {
     max-width: 280px;
+    color: orange;
 }
 
 #main {
@@ -56,13 +59,13 @@ textarea {
 
 #menucontainer a {
     text-decoration: none;
-    color: black;
+    color: orange;
 }
 
 ul {
-    background-color: aliceblue;
+    background-color: forestgreen;
 }
 
 th, td {
-    border: solid 1px black;
+    border: solid 1px white;
 }
